@@ -1,5 +1,29 @@
-
-<section class="login">
-  <h1>login Component</h1>
-</section>
-
+<v-app id="login">
+  <v-content>
+    <v-container fluid fill-height>
+      <v-layout align-center justify-center>
+        <v-flex xs12 sm8 md3>
+          <v-card class="pa-2 elevation-2">
+            <v-layout justify-center>
+              <v-icon class="login__icon" color="info">account_circle</v-icon>
+            </v-layout>
+            <v-layout justify-center>
+                <h1 class="display-2 font-weight-light grey--text">Login</h1>
+              </v-layout>
+            <v-card-text>
+              <v-form>
+                <v-text-field id="merchantID" name="merchantID" label="Merchant ID" type="text"></v-text-field>
+                <v-text-field id="password" name="password" label="Password" type="password"></v-text-field>
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn class="login__btn" color="info" block dark large>
+                Sign in
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-content>
+</v-app>
