@@ -1,21 +1,18 @@
 import { Component, Vue } from 'vue-property-decorator';
+import Header from '../Header/index.vue';
+import Sidebar from '../Sidebar/index.vue';
 
 @Component({
   components: {
-    
+    Header,
+    Sidebar
   },
 })
 export default class Layout extends Vue {
-  drawer = false;
-  links = [
-    {icon: 'dashboard', text: 'Dashboard', route: '/dashboard'},
-    {icon: 'euro_symbol', text: 'Best Sellers', route: '/sellers'},
-    {icon: 'build', text: 'About', route: '/about'},
-    {icon: 'exit_to_app', text: 'Sign Out', route: '/signout'}
-  ];
+  drawerValue = false;
 
   sidebarToggler() {
-    this.drawer = !this.drawer;
+    this.drawerValue = !this.drawerValue;
   }
 
 }
