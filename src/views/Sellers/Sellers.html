@@ -1,5 +1,16 @@
-
-<section class="sellers">
-  <h1>sellers Component</h1>
-</section>
-
+<v-data-table :headers="headers" :items="products" class="elevation-1">
+  <template v-slot:items="props">
+    <td>{{ props.item.thumbnail }}</td>
+    <td class="text-xs-left">{{ props.item.title }}</td>
+    <td class="text-xs-left">{{ props.item.sku }}</td>
+    <td class="text-xs-left">
+        <v-text-field single-line :value="props.item.min" prefix="€" :disabled="!props.item.repricing"></v-text-field>
+      </td>
+    <td class="text-xs-left">
+      <v-text-field single-line :value="props.item.max" prefix="€" :disabled="!props.item.repricing"></v-text-field>
+    </td>
+    <td class="text-xs-left">
+      <v-switch v-model="props.item.repricing" color="info" value="info" hide-details></v-switch>
+    </td>
+  </template>
+</v-data-table>

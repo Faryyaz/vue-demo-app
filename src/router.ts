@@ -4,6 +4,7 @@ import Login from './views/Login/index.vue';
 import Layout from './components/Layout/index.vue';
 import About from './views/About.vue';
 import Sellers from './views/Sellers/index.vue';
+import Dashboard from './views/Dashboard/index.vue';
 
 Vue.use(Router)
 
@@ -27,6 +28,13 @@ export default new Router({
           component: Sellers,
           name: 'sellers',
           meta: {description: 'Overview of the best sellers'}
+        },
+        {
+          path: 'dashboard',
+          alias: '',
+          component: Dashboard,
+          name: 'dashboard',
+          meta: {description: 'Overview of statistics'}
         },
         {
           path: 'about',
