@@ -54,22 +54,24 @@ const router = new Router({
     //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     // }
   ]
-})
+});
 
-router.beforeEach((to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login'];
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('user');
+router.beforeEach();
 
-  if (authRequired && !loggedIn) {
-    return next({ 
-      path: '/login', 
-      query: { returnUrl: to.path } 
-    });
-  }
+// router.beforeEach((to, from, next) => {
+//   // redirect to login page if not logged in and trying to access a restricted page
+//   const publicPages = ['/login'];
+//   const authRequired = !publicPages.includes(to.path);
+//   const loggedIn = localStorage.getItem('user');
 
-  next();
-})
+//   if (authRequired && !loggedIn) {
+//     return next({ 
+//       path: '/login', 
+//       query: { returnUrl: to.path } 
+//     });
+//   }
+
+//   next();
+// })
 
 export default { router }
