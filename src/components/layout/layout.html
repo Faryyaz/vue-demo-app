@@ -1,0 +1,9 @@
+<main>
+  <Header v-on:toggleSidebar="sidebarToggler" />
+  <Sidebar :drawer="drawerValue" />
+  <v-container>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </v-container>
+</main>

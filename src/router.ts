@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from './views/Login/index.vue';
-import Layout from './components/Layout/index.vue';
+import Login from './views/login/index.vue';
+import Layout from './components/layout/index.vue';
 import About from './views/About.vue';
-import Sellers from './views/Sellers/index.vue';
-import Dashboard from './views/Dashboard/index.vue';
+import Sellers from './views/sellers/index.vue';
+import Dashboard from './views/dashboard/index.vue';
 
 Vue.use(Router)
 
