@@ -15,10 +15,11 @@
             <v-layout justify-center>
                 <h1 class="display-2 font-weight-light grey--text">Login</h1>
               </v-layout>
+              <v-form @submit.prevent="handleSubmit">
             <v-card-text>
-              <v-form>
-                <v-text-field id="merchantID" name="merchantID" label="Merchant ID" type="text"></v-text-field>
-                <v-text-field id="password" name="password" label="Password" type="password"></v-text-field>
+              
+                <v-text-field id="merchantID" v-model="merchantID" name="merchantID" label="Merchant ID" type="text"></v-text-field>
+                <v-text-field id="password" v-model="password" name="password" label="Password" type="password"></v-text-field>
                 <v-layout row>
                   <v-flex>
                   <v-switch
@@ -29,13 +30,13 @@
                   ></v-switch>
                 </v-flex>
                 </v-layout>
-              </v-form>
             </v-card-text>
             <v-card-actions class="login__actions">
-              <v-btn class="login__btn" color="info" block dark large>
+              <v-btn type="submit" class="login__btn" color="info" block dark large>
                 Sign in
               </v-btn>
             </v-card-actions>
+          </v-form>
             <v-card-text>
                 <a class="info--text" href="#">Need help?</a>
               </v-card-text>

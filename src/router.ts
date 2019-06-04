@@ -6,7 +6,7 @@ import About from './views/About.vue';
 import Sellers from './views/sellers/index.vue';
 import Dashboard from './views/dashboard/index.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   mode: 'history',
@@ -56,22 +56,20 @@ const router = new Router({
   ]
 });
 
-router.beforeEach();
+router.beforeEach((to, from, next) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ['/login'];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('user');
 
-// router.beforeEach((to, from, next) => {
-//   // redirect to login page if not logged in and trying to access a restricted page
-//   const publicPages = ['/login'];
-//   const authRequired = !publicPages.includes(to.path);
-//   const loggedIn = localStorage.getItem('user');
+  if (authRequired && !loggedIn) {
+    return next({ 
+      path: '/login', 
+      query: { returnUrl: to.path } 
+    });
+  }
 
-//   if (authRequired && !loggedIn) {
-//     return next({ 
-//       path: '/login', 
-//       query: { returnUrl: to.path } 
-//     });
-//   }
+  next();
+})
 
-//   next();
-// })
-
-export default { router }
+export default router;

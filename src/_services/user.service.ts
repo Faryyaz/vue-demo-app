@@ -1,8 +1,12 @@
 import { AuthHeaderService } from './auth-header.service';
 
-export class UserService {
 
-    constructor(private authHeaderService: AuthHeaderService) {}
+export default class UserService {
+    authHeaderService: any;
+
+    constructor() {
+      this.authHeaderService = new AuthHeaderService();
+    }
 
     login(merchantID: string, password: string) {
         const requestOptions = {
@@ -32,7 +36,7 @@ export class UserService {
       }
       
       getAll() {
-        const requestOptions = {
+        const requestOptions: RequestInit = {
           method: "GET",
           headers: this.authHeaderService.init()
         };
@@ -41,7 +45,7 @@ export class UserService {
       }
       
       handleResponse(response: any) {
-        return response.text().then(text => {
+        return response.text().then( (text: any) => {
           const data = text && JSON.parse(text);
           if (!response.ok) {
             if (response.status === 401) {
