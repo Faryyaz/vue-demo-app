@@ -1,0 +1,40 @@
+<v-flex class="login__form move-in">
+    <v-layout row class="pa-2">
+        <v-flex class="text-xs-center">
+            <v-icon color="white" class="mr-2">star_half</v-icon><span class="headline white--text"><span class="font-weight-light">Professional</span><span>Company</span></span>
+        </v-flex>
+      </v-layout>
+  <v-card class="pa-2 elevation-2">
+    <v-layout justify-center>
+      <v-icon class="login__icon" color="info">account_circle</v-icon>
+    </v-layout>
+    <v-layout justify-center>
+        <h1 class="display-2 font-weight-light grey--text">Login</h1>
+      </v-layout>
+      <v-form @submit.prevent="handleSubmit">
+    <v-card-text>
+      
+        <v-text-field id="merchantID" v-model="merchantID" name="merchantID" label="Merchant ID" type="text"></v-text-field>
+        <v-text-field id="password" v-model="password" name="password" label="Password" type="password"></v-text-field>
+        <v-layout row>
+          <v-flex>
+          <v-switch
+            label="Remember me"
+            color="info"
+            value="info"
+            hide-details
+          ></v-switch>
+        </v-flex>
+        </v-layout>
+    </v-card-text>
+    <v-card-actions class="login__actions">
+      <v-btn type="submit" class="login__btn" color="info" block dark large>
+        Sign in
+      </v-btn>
+    </v-card-actions>
+  </v-form>
+    <v-card-text>
+        <a class="info--text" href="#">Need help?</a>
+      </v-card-text>
+  </v-card>
+</v-flex>

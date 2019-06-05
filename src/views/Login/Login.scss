@@ -15,45 +15,66 @@
         background: #000;
         opacity: 0.5;
     }
-
-    &__form {
-        max-width: 430px;
-        width: 100%;
-    }
-
-    &__icon {
-        font-size: 120px;
-    }
-
-    &__actions {
-        padding: 0;
-        margin-top: 16px;
-    }
-
-    &__btn {
-        height: 60px;
-        margin-left: -8px;
-        margin-right: -8px;
-        border-radius: 0;
-    }
 }
 
-.move-in {
-    margin-top: 0;
-    opacity: 1;
-	animation-name: moveIn;
+.slide-to-left {
+    transform: translateX(-400%);
+    opacity: 0;
+	animation-name: slideToLeft;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-	animation-duration: 0.8s;
+	animation-duration: 0.5s;
 }
 
-@keyframes moveIn {
+@keyframes slideToLeft {
 	0% {
-        opacity: 0;
-		margin-top: 400px;
+        opacity: 1;
+        transform: translateX(0);
 	}
 	100% {
-        opacity: 1;
-		margin-top: 0;
+        opacity: 0;
+        transform: translateX(-400%);
 	}
 }
+
+
+.component-fade-enter-active {
+    transition: all .3s ease;
+}
+.component-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.component-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+// /* base */
+// .company {
+//     backface-visibility: hidden;
+//     z-index: 1;
+//   }
+  
+//   /* moving */
+//   .company-move {
+//     transition: all 600ms ease-in-out 50ms;
+//   }
+  
+//   /* appearing */
+//   .company-enter-active {
+//     transition: all 400ms ease-out;
+//   }
+  
+//   /* disappearing */
+//   .company-leave-active {
+//     transition: all 200ms ease-in;
+//     position: absolute;
+//     z-index: 0;
+//   }
+  
+//   /* appear at / disappear to */
+//   .company-enter,
+//   .company-leave-to {
+//     opacity: 0;
+//   }
