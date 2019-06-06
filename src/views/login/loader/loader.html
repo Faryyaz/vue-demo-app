@@ -1,10 +1,8 @@
-<v-flex class="login__form">
+<v-flex class="loader">
     <v-card class="pa-2 elevation-2">
-        <v-layout justify-center="justify-center">
-            <v-icon class="login__icon" color="info">account_circle</v-icon>
-        </v-layout>
-        <v-layout justify-center="justify-center">
-            <h1 class="display-2 font-weight-light grey--text">Loading</h1>
-        </v-layout>
-    </v-card>
+      <v-layout align-center justify-center column fill-height>
+          <v-progress-circular :size="100" :width="10" color="info" indeterminate="indeterminate"></v-progress-circular>
+          <h1 class="display-1 font-weight-light grey--text mt-4">Checking credentials</h1>
+      </v-layout>
+      </v-card>
 </v-flex>
