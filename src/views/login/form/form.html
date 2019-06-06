@@ -1,4 +1,4 @@
-<v-flex class="login__form move-in">
+<v-flex class="login__form" :class="err ? '' : 'move-in'">
     <v-layout row="row" class="pa-2">
         <v-flex class="text-xs-center">
             <v-icon color="white" class="mr-2">star_half</v-icon><span class="headline white--text"><span class="font-weight-light">Professional</span><span>Company</span></span>
@@ -12,12 +12,9 @@
             <h1 class="display-2 font-weight-light grey--text">Login</h1>
         </v-layout>
         <v-form @submit.prevent="handleSubmit">
-            <v-card-text v-if="err">
-                <v-alert
-                    :value="true"
-                    type="error"
-                  >
-                    This is a error alert.
+            <v-card-text v-show="err">
+                <v-alert :value="true" type="error">
+                    {{ errMsg }}
                 </v-alert>
             </v-card-text>
             <v-card-text>

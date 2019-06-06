@@ -16,8 +16,8 @@ export default class Login extends Vue {
 
   mounted() {
 
-    EventBus.$on('submitted', (param: string)=> {
-      this.changeView(param);
+    EventBus.$on('submitted', (view: string)=> {
+      this.changeView(view);
     });
 
   }
