@@ -12,8 +12,15 @@
             <h1 class="display-2 font-weight-light grey--text">Login</h1>
         </v-layout>
         <v-form @submit.prevent="handleSubmit">
+            <v-card-text v-if="err">
+                <v-alert
+                    :value="true"
+                    type="error"
+                  >
+                    This is a error alert.
+                </v-alert>
+            </v-card-text>
             <v-card-text>
-
                 <v-text-field id="merchantID" v-model="merchantID" name="merchantID" label="Merchant ID" type="text"></v-text-field>
                 <v-text-field id="password" v-model="password" name="password" label="Password" type="password"></v-text-field>
                 <v-layout row="row">

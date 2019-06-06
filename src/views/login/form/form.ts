@@ -1,6 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import UserService from '@/_services/user.service';
 import router from '@/router';
+import { EventBus } from '@/event-bus';
 
 @Component({
 })
@@ -10,6 +11,7 @@ export default class Form extends Vue {
   merchantID: string = "";
   password: string = "";
   submitted: boolean = false;
+  err: boolean = false;
   
   mounted () {
     this.userService = new UserService();
@@ -35,14 +37,15 @@ export default class Form extends Vue {
     this.submitted = true;
 
     // show loading screen on submission
-    this.$emit('submitted', 'Loader');
+    EventBus.$emit('submitted', 'Loader');
 
     // this.loading = true;
     this.userService.login(merchantID, password).then(
       (user: any) => router.push(this.returnUrl),
-      (error: Error) => console.log(error)
+      (error: Error) => {
+        this.err = true;
+        EventBus.$emit('submitted', 'Form');
+      }
     );
   }
-
-
 }

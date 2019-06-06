@@ -2,7 +2,7 @@
   <v-content>
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
-        <transition name="component-fade">
+        <transition name="component-fade" mode="out-in">
           <component v-bind:is="view"></component>
         </transition>
       </v-layout>

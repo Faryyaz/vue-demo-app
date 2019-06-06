@@ -44,7 +44,7 @@ export default class UserService {
         return fetch(`/users`, requestOptions).then(this.handleResponse);
       }
       
-      handleResponse(response: any) {
+      handleResponse(response: Response) {
         return response.text().then( (text: any) => {
           const data = text && JSON.parse(text);
           if (!response.ok) {
