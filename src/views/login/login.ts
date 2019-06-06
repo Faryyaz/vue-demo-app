@@ -13,4 +13,8 @@ import Error from './error/index.vue';
 export default class Login extends Vue {
   view: any = Form;
 
+  changeView(view: string) {
+    this.view = view;
+  }
+
 }

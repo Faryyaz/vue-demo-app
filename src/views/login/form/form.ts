@@ -34,6 +34,9 @@ export default class Form extends Vue {
 
     this.submitted = true;
 
+    // show loading screen on submission
+    this.$emit('submitted', 'Loader');
+
     // this.loading = true;
     this.userService.login(merchantID, password).then(
       (user: any) => router.push(this.returnUrl),
