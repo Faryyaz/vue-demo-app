@@ -1,16 +1,26 @@
-<v-data-table :headers="headers" :items="products" class="elevation-1">
-  <template v-slot:items="props">
-    <td>{{ props.item.thumbnail }}</td>
-    <td class="text-xs-left">{{ props.item.title }}</td>
-    <td class="text-xs-left">{{ props.item.sku }}</td>
-    <td class="text-xs-left">
-        <v-text-field single-line :value="props.item.min" prefix="€" :disabled="!props.item.repricing"></v-text-field>
+<transition name="simple-fade" mode="out-in">
+  <v-data-table :headers="headers" :items="products" class="elevation-1" v-if="products.length">
+    <template v-slot:items="props">
+      <td class="text-xs-center"><img class="product__thumbnail" :src="props.item.thumbnail" :alt="props.item.title"/></td>
+      <td class="text-xs-left">{{ props.item.title }}</td>
+      <td class="text-xs-left">{{ props.item.sku }}</td>
+      <td class="text-xs-left">
+          <v-text-field single-line :value="props.item.min" prefix="€" :disabled="!props.item.repricing"></v-text-field>
+        </td>
+      <td class="text-xs-left">
+        <v-text-field single-line :value="props.item.max" prefix="€" :disabled="!props.item.repricing"></v-text-field>
       </td>
-    <td class="text-xs-left">
-      <v-text-field single-line :value="props.item.max" prefix="€" :disabled="!props.item.repricing"></v-text-field>
-    </td>
-    <td class="text-xs-left">
-      <v-switch v-model="props.item.repricing" color="info" value="info" hide-details></v-switch>
-    </td>
-  </template>
-</v-data-table>
+      <td class="text-xs-left">
+        <v-switch v-model="props.item.repricing" color="info" value="info" hide-details></v-switch>
+      </td>
+    </template>
+  </v-data-table>
+  <v-layout class="sellers__loader" column fill-height v-else>
+    <v-flex class="pa-2">
+        <v-layout align-center justify-center column fill-height>
+            <v-progress-circular :size="100" :width="10" color="info" indeterminate="indeterminate"></v-progress-circular>
+            <h2 class="display-1 font-weight-light grey--text mt-4">Connecting</h2>
+        </v-layout>
+    </v-flex>
+</v-layout>
+</transition>

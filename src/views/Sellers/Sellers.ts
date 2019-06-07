@@ -9,7 +9,7 @@ export default class Login extends Vue {
   headers = [
     {
       text: 'Thumbnail',
-      align: 'left',
+      align: 'center',
       sortable: false,
       value: 'thumbnail'
     },
@@ -20,23 +20,48 @@ export default class Login extends Vue {
     { text: 'Repricing', sortable: false, value: 'repricing' }
   ];
 
-  products = [
+  products: 
     {
-      thumbnail: 'Frozen Yogurt',
-      title: 159,
-      sku: 6.0,
-      min: 4.0,
-      max: 24,
-      repricing: false
-    },
-    {
-      thumbnail: 'Product',
-      title: 160,
-      sku: 6.0,
-      min: 4.0,
-      max: 24,
-      repricing: false
-    },
-  ];
+      thumbnail: string,
+      title: string,
+      sku: string,
+      min: number,
+      max: number,
+      repricing: boolean
+    }[] = [];
+
+  mounted() {
+    this.get();
+  }
+
+
+  get() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(
+          this.products = [
+            {
+              thumbnail: 'https://via.placeholder.com/150/DDDDDD/555555?text=Product+A',
+              title: 'Product A',
+              sku: 'PAFR0001',
+              min: 4.0,
+              max: 24,
+              repricing: false
+            },
+            {
+              thumbnail: 'https://via.placeholder.com/150/DDDDDD/555555?text=Product+B',
+              title: 'Product B',
+              sku: 'PBFR0002',
+              min: 4.0,
+              max: 24,
+              repricing: false
+            }
+          ]
+        );
+      }, 3000);
+    });
+  }
+
+
 
 }
