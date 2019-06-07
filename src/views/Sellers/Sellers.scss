@@ -2,6 +2,12 @@
     &__loader {
         height: calc(100vh - 200px);
     }
+
+    &__table {
+        & .v-table tbody tr:not(:last-child) {
+            border-bottom: none !important;
+        }
+    }
 }
 
 .product{
@@ -14,8 +20,8 @@
 
 .simple-fade-enter-active, .simple-fade-leave-active {
     transition: opacity .3s ease;
-  }
-  .simple-fade-enter, .simple-fade-leave-to
-  /* .component-fade-leave-active below version 2.1.8 */ {
+}
+.simple-fade-enter, .simple-fade-leave-to
+    /* .component-fade-leave-active below version 2.1.8 */ {
     opacity: 0;
-  }
+}

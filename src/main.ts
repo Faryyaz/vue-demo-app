@@ -5,7 +5,7 @@ import router from './router'
 import Vuetify from 'vuetify';
 import FakeAuthService from './_services/fake-auth.service';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 Vue.use(Vuetify);
 
 // start the fake auth service

@@ -1,9 +1,6 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 
 @Component({
-  components: {
-
-  },
 })
 export default class Login extends Vue {
   headers = [
@@ -15,8 +12,8 @@ export default class Login extends Vue {
     },
     { text: 'Title', value: 'title' },
     { text: 'SKU', value: 'sku' },
-    { text: 'Min price', value: 'min' },
-    { text: 'Max price', value: 'max' },
+    { text: 'Min price', value: 'min', width: "200px" },
+    { text: 'Max price', value: 'max', width: "200px" },
     { text: 'Repricing', sortable: false, value: 'repricing' }
   ];
 
@@ -29,6 +26,19 @@ export default class Login extends Vue {
       max: number,
       repricing: boolean
     }[] = [];
+
+    validations = {
+      min: [
+        (v: number) => !!v || 'Min price is required',
+        (v: number) => v >= 0.01 || 'Min price cannot be less than € 0.01'
+      ],
+      max: [
+        (v: number) => !!v || 'Max price is required',
+        (v: number) => v >= 0.01 || 'Max price cannot be less than € 0.01'
+      ]
+    };
+
+    
 
   mounted() {
     this.get();
@@ -52,16 +62,14 @@ export default class Login extends Vue {
               thumbnail: 'https://via.placeholder.com/150/DDDDDD/555555?text=Product+B',
               title: 'Product B',
               sku: 'PBFR0002',
-              min: 4.0,
-              max: 24,
+              min: 7,
+              max: 56,
               repricing: false
             }
           ]
         );
-      }, 3000);
+      }, 1000);
     });
   }
-
-
 
 }
