@@ -3,6 +3,7 @@
     &__form {
         max-width: 430px;
         width: 100%;
+        margin-top: -80px;
     }
 
     &__icon {
@@ -23,12 +24,12 @@
 }
 
 .move-in {
-    margin-top: 0;
+    margin-top: -80px;
     opacity: 1;
 	animation-name: moveIn;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-	animation-duration: 0.8s;
+	animation-duration: 0.4s;
 }
 
 @keyframes moveIn {
@@ -38,6 +39,6 @@
 	}
 	100% {
         opacity: 1;
-		margin-top: 0;
+		margin-top: -80px;
 	}
 }

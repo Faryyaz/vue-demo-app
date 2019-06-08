@@ -19,12 +19,7 @@ export default class Sellers extends Vue {
 
   products: 
     {
-      thumbnail: string,
-      title: string,
-      sku: string,
-      min: number,
-      max: number,
-      repricing: boolean
+      [key:string]: any
     }[] = [];
 
     validations = {
@@ -58,16 +53,16 @@ export default class Sellers extends Vue {
               thumbnail: 'https://via.placeholder.com/100/DDDDDD/555555?text=Product+A',
               title: 'Product A',
               sku: 'PAFR0001',
-              min: 4.0,
-              max: 24,
+              min: this.formatPrice(5),
+              max: this.formatPrice(25),
               repricing: false
             },
             {
               thumbnail: 'https://via.placeholder.com/100/DDDDDD/555555?text=Product+B',
               title: 'Product B',
               sku: 'PBFR0002',
-              min: 7,
-              max: 56,
+              min: this.formatPrice(2),
+              max: this.formatPrice(5),
               repricing: false
             }
           ]
@@ -87,6 +82,13 @@ export default class Sellers extends Vue {
     }
   }
 
+  formatPriceOnBlur(key: string, index: number) {
+    let productPrice = this.products[index][key];
+    this.products[index][key] = this.formatPrice(productPrice);
+  }
 
+  formatPrice(value: number) {
+    return (Math.round(value * 100) / 100).toFixed(2);
+  }
 
 }

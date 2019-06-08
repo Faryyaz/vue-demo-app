@@ -9,10 +9,10 @@
                 <td class="text-xs-left">{{ props.item.title }}</td>
                 <td class="text-xs-left">{{ props.item.sku }}</td>
                 <td class="text-xs-left">
-                    <v-text-field single-line type="number" v-model="props.item.min" :rules="validations.min" :error-messages="props.item.min >= props.item.max ? ['Min price cannot be greater or equal to Max price'] : []" prefix="€" :disabled="!props.item.repricing"></v-text-field>
+                    <v-text-field single-line type="number" v-model="props.item.min" @blur="formatPriceOnBlur('min', props.index)" :rules="validations.min" :error-messages="parseFloat(props.item.min) >= parseFloat(props.item.max) ? ['Min price cannot be greater or equal to Max price'] : []" prefix="€" :disabled="!props.item.repricing"></v-text-field>
                   </td>
                 <td class="text-xs-left">
-                  <v-text-field single-line type="number" v-model="props.item.max" :rules="validations.max" :error-messages="props.item.max <= props.item.min ? ['Max price cannot be less or equal to Min price'] : []" prefix="€" :disabled="!props.item.repricing"></v-text-field>
+                  <v-text-field single-line type="number" v-model="props.item.max" @blur="formatPriceOnBlur('max', props.index)" :rules="validations.max" :error-messages="parseFloat(props.item.max) <= parseFloat(props.item.min) ? ['Max price cannot be less or equal to Min price'] : []" prefix="€" :disabled="!props.item.repricing"></v-text-field>
                 </td>
                 <td class="text-xs-left">
                   <v-switch v-model="props.item.repricing" color="info" value="info" hide-details></v-switch>

@@ -13,7 +13,16 @@ export default class Form extends Vue {
   password: string = "";
   submitted: boolean = false;
   errMsg: string = 'test';
-  err: boolean = false;
+  valid: boolean = false;
+  validations = {
+    merchantID: [
+      (v: string) => !!v || 'MerchantID is required'
+    ],
+    password: [
+      (v: string) => !!v || 'Password is required'
+    ]
+  };
+
   
   mounted () {
     this.userService = new UserService();
@@ -32,7 +41,7 @@ export default class Form extends Vue {
     const { merchantID, password } = this;
 
     // stop here if form is invalid
-    if (!(merchantID && password)) {
+    if (!this.valid) {
       return;
     }
 
