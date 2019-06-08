@@ -1,9 +1,9 @@
-<v-flex class="login__form" :class="err ? '' : 'move-in'">
-    <v-layout row="row" class="pa-2">
+<v-flex class="login__form" :class="loginError ? '' : 'move-in'">
+    <!-- <v-layout row="row" class="pa-2">
         <v-flex class="text-xs-center">
-            <v-icon color="white" class="mr-2">star_half</v-icon><span class="headline white--text"><span class="font-weight-light">Professional</span><span>Company</span></span>
+            <v-icon color="white" class="mr-2">star_half</v-icon><span class="headline white--text"><span class="font-weight-light">Com</span><span>pany</span></span>
         </v-flex>
-    </v-layout>
+    </v-layout> -->
     <v-card class="pa-2 elevation-2">
         <v-layout justify-center="justify-center">
             <v-icon class="login__icon" color="info">account_circle</v-icon>
@@ -12,9 +12,9 @@
             <h1 class="display-2 font-weight-light grey--text">Login</h1>
         </v-layout>
         <v-form @submit.prevent="handleSubmit">
-            <v-card-text v-show="err">
+            <v-card-text v-show="loginError">
                 <v-alert :value="true" type="error">
-                    {{ errMsg }}
+                    {{ loginError }}
                 </v-alert>
             </v-card-text>
             <v-card-text>

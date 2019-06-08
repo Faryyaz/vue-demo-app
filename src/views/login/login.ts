@@ -13,11 +13,15 @@ import { EventBus } from '@/event-bus';
 })
 export default class Login extends Vue {
   view: any = Form;
+  loginErrorMsg: string = "";
 
   mounted() {
-
     EventBus.$on('submitted', (view: string)=> {
       this.changeView(view);
+    });
+
+    EventBus.$on('loginError', (error: string)=> {
+      this.loginErrorMsg = error;
     });
 
   }
