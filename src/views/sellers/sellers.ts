@@ -1,8 +1,8 @@
-import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
 })
-export default class Login extends Vue {
+export default class Sellers extends Vue {
   headers = [
     {
       text: 'Thumbnail',
@@ -38,6 +38,9 @@ export default class Login extends Vue {
       ]
     };
 
+    valid: boolean = true;
+    submitted: boolean = false;
+    view: string = "Loader";
     
 
   mounted() {
@@ -46,12 +49,13 @@ export default class Login extends Vue {
 
 
   get() {
+    this.view = "Loader";
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(
           this.products = [
             {
-              thumbnail: 'https://via.placeholder.com/150/DDDDDD/555555?text=Product+A',
+              thumbnail: 'https://via.placeholder.com/100/DDDDDD/555555?text=Product+A',
               title: 'Product A',
               sku: 'PAFR0001',
               min: 4.0,
@@ -59,7 +63,7 @@ export default class Login extends Vue {
               repricing: false
             },
             {
-              thumbnail: 'https://via.placeholder.com/150/DDDDDD/555555?text=Product+B',
+              thumbnail: 'https://via.placeholder.com/100/DDDDDD/555555?text=Product+B',
               title: 'Product B',
               sku: 'PBFR0002',
               min: 7,
@@ -68,8 +72,22 @@ export default class Login extends Vue {
             }
           ]
         );
-      }, 1000);
-    });
+      }, 10000);
+    }).then(()=>{
+        this.view = "Table";
+      }
+    );
   }
+
+  handleSubmit() {
+    // form is valid therefore we can submit
+    if (this.valid) {
+      this.view = "Success";
+    }
+
+
+  }
+
+
 
 }

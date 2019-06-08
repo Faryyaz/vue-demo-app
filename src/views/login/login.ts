@@ -1,6 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Form from './form/index.vue';
-import Loader from './loader/index.vue';
+import Loader from '../../components/loader/index.vue';
 import Error from './error/index.vue';
 import { EventBus } from '@/event-bus';
 
