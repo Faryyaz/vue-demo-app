@@ -83,9 +83,8 @@ export default class Sellers extends Vue {
     // form is valid therefore we can submit
     if (this.valid) {
       this.view = "Success";
+      // send the pricing list here
     }
-
-
   }
 
 

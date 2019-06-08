@@ -23,7 +23,7 @@ export default class Form extends Vue {
     this.userService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.$route.query.returnUrl || "/";
+    this.returnUrl = this.$route.query.returnUrl == "/logout" ? "/" : this.$route.query.returnUrl || "/";
 
   }
 

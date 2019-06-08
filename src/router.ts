@@ -5,6 +5,7 @@ import Layout from './components/layout/index.vue';
 import About from './views/About.vue';
 import Sellers from './views/sellers/index.vue';
 import Dashboard from './views/dashboard/index.vue';
+import Logout from './views/logout/index.vue';
 
 Vue.use(Router);
 
@@ -16,6 +17,11 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: Logout
     },
     {
       path: '/',
