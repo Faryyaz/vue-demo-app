@@ -1,0 +1,50 @@
+<transition name="simple-fade" mode="out-in">
+      <v-flex v-if="view == 'Table'">
+          <v-form v-model="valid" @submit.prevent="handleSubmit">
+            <h1 class="display-1">Best Sellers</h1>
+            <p>Here are the 10 best sellers that we found for you</p>
+            <v-data-table :headers="headers" :items="products" class="elevation-1 sellers__table">
+              <template v-slot:items="props">
+                <td class="text-xs-center"><img class="product__thumbnail" :src="props.item.thumbnail" :alt="props.item.title"/></td>
+                <td class="text-xs-left">{{ props.item.title }}</td>
+                <td class="text-xs-left">{{ props.item.sku }}</td>
+                <td class="text-xs-left">
+                    <v-text-field single-line type="number" v-model="props.item.min" @blur="formatPriceOnBlur('min', props.index)" :rules="validations.min" :error-messages="parseFloat(props.item.min) >= parseFloat(props.item.max) ? ['Min price cannot be greater or equal to Max price'] : []" prefix="€" :disabled="!props.item.repricing"></v-text-field>
+                  </td>
+                <td class="text-xs-left">
+                  <v-text-field single-line type="number" v-model="props.item.max" @blur="formatPriceOnBlur('max', props.index)" :rules="validations.max" :error-messages="parseFloat(props.item.max) <= parseFloat(props.item.min) ? ['Max price cannot be less or equal to Min price'] : []" prefix="€" :disabled="!props.item.repricing"></v-text-field>
+                </td>
+                <td class="text-xs-left">
+                  <v-switch v-model="props.item.repricing" color="info" value="info" hide-details></v-switch>
+                </td>
+              </template>
+            </v-data-table>
+            <v-layout class="mt-3">
+              <v-spacer></v-spacer>
+              <v-btn type="submit" :disabled="!valid" class="info mr-0" large>
+                  Start
+              </v-btn>
+            </v-layout>
+        </v-form>
+      </v-flex>
+      <v-layout v-if="view == 'Loader'" class="sellers__loader" column fill-height>
+        <v-flex class="pa-2">
+            <v-layout align-center justify-center column fill-height>
+                <div class="spinner"></div>
+                <h2 class="display-1 font-weight-light grey--text mt-4">Loading</h2>
+            </v-layout>
+        </v-flex>
+    </v-layout>
+    <v-layout v-if="view == 'Success'" class="sellers__loader" column fill-height>
+        <v-flex class="pa-2">
+            <v-layout align-center justify-center column fill-height>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                  <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+                  <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+                </svg>
+                <h2 class="display-1 font-weight-light grey--text mt-4">Repricing started</h2>
+                <p><a href="javascript:;" @click="get">Click here</a> if you want to edit the price list again.</p>
+            </v-layout>
+        </v-flex>
+    </v-layout>
+  </transition>
