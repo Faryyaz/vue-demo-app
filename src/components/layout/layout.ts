@@ -9,10 +9,10 @@ import Sidebar from '../sidebar/index.vue';
   },
 })
 export default class Layout extends Vue {
-  drawerValue = false;
+  miniValue = true;
 
   sidebarToggler() {
-    this.drawerValue = !this.drawerValue;
+    this.miniValue = !this.miniValue;
   }
 
 }

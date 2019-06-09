@@ -1,13 +1,14 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
-  props: ['drawer'],
+  props: ['mini'],
   components: {
     
   },
 })
 export default class Sidebar extends Vue {
-  
+  drawer: boolean = true;
+
   links = [
     {icon: 'dashboard', text: 'Dashboard', route: '/dashboard'},
     {icon: 'euro_symbol', text: 'Best Sellers', route: '/sellers'},

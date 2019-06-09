@@ -1,6 +1,6 @@
 <main>
   <Header v-on:toggleSidebar="sidebarToggler" />
-  <Sidebar :drawer="drawerValue" />
+  <Sidebar :mini="miniValue" />
   <v-container>
     <transition name="fade" mode="out-in">
       <router-view></router-view>
