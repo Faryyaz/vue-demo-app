@@ -1,0 +1,16 @@
+<v-app class="login">
+  <v-layout row="row" class="login__brand pa-2">
+      <v-flex class="text-xs-center text-sm-left">
+          <v-icon color="white" class="mr-2">star_half</v-icon><span class="headline white--text"><span class="font-weight-light">Com</span><span>pany</span></span>
+      </v-flex>
+  </v-layout>
+  <v-content>
+    <v-container fluid fill-height>
+      <v-layout align-center justify-center>
+        <transition name="component-fade" mode="out-in">
+          <component v-bind:is="view" :login-error="loginErrorMsg"></component>
+        </transition>
+      </v-layout>
+    </v-container>
+  </v-content>
+</v-app>

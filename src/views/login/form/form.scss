@@ -1,0 +1,44 @@
+.login {
+    
+    &__form {
+        max-width: 430px;
+        width: 100%;
+        margin-top: -80px;
+    }
+
+    &__icon {
+        font-size: 120px;
+    }
+
+    &__actions {
+        padding: 0;
+        margin-top: 16px;
+    }
+
+    &__btn {
+        height: 60px;
+        margin-left: -8px;
+        margin-right: -8px;
+        border-radius: 0;
+    }
+}
+
+.move-in {
+    margin-top: -80px;
+    opacity: 1;
+	animation-name: moveIn;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.4s;
+}
+
+@keyframes moveIn {
+	0% {
+        opacity: 0;
+		margin-top: 400px;
+	}
+	100% {
+        opacity: 1;
+		margin-top: -80px;
+	}
+}
