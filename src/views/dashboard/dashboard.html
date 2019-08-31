@@ -1,5 +1,51 @@
 
 <section class="dashboard">
-  <h1>dashboard Component</h1>
+  <v-card :width="600">
+    <v-card-text>
+      <h1 class="title">
+        Add Data Form
+      </h1>
+      <v-container grid-list-md text-md-center fluid fill-height>
+        <v-layout row>
+          <v-flex>
+              <v-text-field
+              v-model="weight"
+              label="Weight (Kg)"
+              type="number"
+              required
+            ></v-text-field>
+          </v-flex>
+          <v-flex>
+              <v-text-field
+              v-model="amount"
+              label="Amount ($)"
+              type="number"
+              required
+            ></v-text-field>
+          </v-flex>
+          <v-flex>
+              <v-btn @click="add" class="mx-2" depressed fab dark small color="primary">
+                <v-icon>add</v-icon>
+              </v-btn>
+          </v-flex>
+        </v-layout>
+      </v-container>
+      <v-container class="pt-0">
+        <v-layout row wrap>
+          <v-chip class="pr-0" color="teal" text-color="white" v-for="(item, index) in collection">
+            {{ item.weight }}kg - ${{ item.amount }} 
+            <!-- <v-btn flat icon class="mr-0" color="white">
+              <v-icon>edit</v-icon>
+            </v-btn> -->
+            <v-btn @click="remove(index)" flat icon class="mr-0" color="white">
+              <v-icon>delete</v-icon>
+            </v-btn>
+          </v-chip>
+        </v-layout>
+      </v-container>
+      <hr class="mb-2">
+      <v-btn color="info">Confirm</v-btn>
+    </v-card-text>
+  </v-card>
 </section>
 
